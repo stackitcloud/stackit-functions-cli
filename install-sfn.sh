@@ -47,11 +47,11 @@ fi
 
 # Resolve latest version:
 if [ "$INSTALL_VERSION" = 'latest' ]; then
-    INSTALL_VERSION="$(curl --silent https://api.github.com/repos/stackitcloud/sfn-cli/releases/latest | sed -En 's|.+"tag_name": "v([^"]+)".+|\1|p')"
+    INSTALL_VERSION="$(curl -L --silent https://api.github.com/repos/stackitcloud/stackit-functions-cli/releases/latest | sed -En 's|.+"tag_name": "v([^"]+)".+|\1|p')"
 fi
 
 # Construct download URL:
-DOWNLOAD_URL="https://github.com/stackitcloud/sfn-cli/releases/download/v${INSTALL_VERSION}/sfn_${INSTALL_VERSION}_${INSTALL_GOOS}_${INSTALL_GOARCH}.tar.gz"
+DOWNLOAD_URL="https://github.com/stackitcloud/stackit-functions-cli/releases/download/v${INSTALL_VERSION}/sfn_${INSTALL_VERSION}_${INSTALL_GOOS}_${INSTALL_GOARCH}.tar.gz"
 
 # Download and install:
 echo "INFO: Downloading SFN CLI $INSTALL_VERSION from $DOWNLOAD_URL and installing to $INSTALL_DIR"
