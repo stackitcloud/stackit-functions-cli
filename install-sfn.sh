@@ -61,7 +61,7 @@ fi
 
 # Resolve latest version:
 if [ "$INSTALL_VERSION" = 'latest' ]; then
-    INSTALL_VERSION="$(curl -L --silent https://api.github.com/repos/stackitcloud/stackit-functions-cli/releases/latest | sed -En 's|.+"tag_name": "v([^"]+)".+|\1|p')"
+    INSTALL_VERSION="$(curl -L --silent https://github.com/stackitcloud/stackit-functions-cli/releases/latest -w %{url_effective} -o /dev/null | sed -E 's|https://github.com/.+/tag/v||')"
 fi
 
 # Construct download URL:
